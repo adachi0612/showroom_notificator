@@ -17,6 +17,7 @@ ROOM_URL_KEYS = [
     "ME_NATSUNE_KAWAGUCHI",
     "ME_MIYUKI_HONDA",
     "48_RINKA_MIYAMOTO",
+    "hiyoNOsuke",
 ]
 
 # DiscordのWebhook URL (絶対に公開しないこと)
