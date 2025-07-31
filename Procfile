@@ -1,0 +1,1 @@
+worker: python oonishi_aoi.py
