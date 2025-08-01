@@ -13,11 +13,14 @@ def index():
     return "OK"
 
 
-if __name__ == "__main__":
+def start_monitor():
     t = threading.Thread(target=main, daemon=True)
     t.start()
-    # Herokuが指定するポート番号を取得。なければ5000をデフォルトにする
-    port = int(os.environ.get("PORT", 5000))
 
-    # Flask Webサーバーを起動
+
+# Flaskアプリ生成時に監視スレッドを起動
+start_monitor()
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
