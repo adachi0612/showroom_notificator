@@ -1,1 +1,1 @@
-worker: python oonishi_aoi.py
+web: python app.py
