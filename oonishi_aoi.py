@@ -110,6 +110,11 @@ def main():
                 elif not is_streaming_now and is_streaming_before[room_url_key]:
                     print(f"💤 {status_data.get('room_name')} の配信が終了しました。")
 
+                elif not is_streaming_now:
+                    print(
+                        f"{status_data.get('room_name')}：現在配信は行われていません。"
+                    )
+
                 # 次のチェックのためにステータスを更新
                 is_streaming_before[room_url_key] = is_streaming_now
 
