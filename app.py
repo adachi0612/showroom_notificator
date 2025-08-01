@@ -4,6 +4,7 @@ import threading
 from flask import Flask
 
 from oonishi_aoi import main
+from tiktok_random import main as tiktok_main
 
 app = Flask(__name__)
 
@@ -18,8 +19,13 @@ def start_monitor():
     t.start()
 
 
-start_monitor()
+def start_tiktok_dice():
+    t = threading.Thread(target=tiktok_main, daemon=True)
+    t.start()
 
+
+start_monitor()
+start_tiktok_dice()
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
