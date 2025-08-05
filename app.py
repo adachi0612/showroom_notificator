@@ -1,8 +1,6 @@
 import os
 import threading
 
-from downloader import DOWNLOAD_DIR
-from downloader import bot as tiktok_bot
 from flask import Flask, send_from_directory
 
 from oonishi_aoi import main as showroom_main
@@ -13,12 +11,6 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     return "OK"
-
-
-@app.route(f"/{DOWNLOAD_DIR}/<path:filename>")
-def download_file(filename):
-    # ダウンロードディレクトリからファイルを配信
-    return send_from_directory(DOWNLOAD_DIR, filename, as_attachment=True)
 
 
 def start_showroom_monitor():
