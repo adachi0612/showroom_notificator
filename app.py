@@ -1,11 +1,11 @@
 import os
 import threading
 
+from downloader import DOWNLOAD_DIR
+from downloader import bot as tiktok_bot
 from flask import Flask, send_from_directory
 
 from oonishi_aoi import main as showroom_main
-from downloader import DOWNLOAD_DIR
-from downloader import bot as tiktok_bot
 
 app = Flask(__name__)
 
@@ -26,17 +26,8 @@ def start_showroom_monitor():
     t.start()
 
 
-def start_tiktok_bot():
-    # Discordボットはイベントループで起動する必要があるため、スレッドでrun
-    t = threading.Thread(
-        target=lambda: tiktok_bot.run(os.getenv("DISCORD_BOT_TOKEN")), daemon=True
-    )
-    t.start()
-
-
 # サーバー起動時に両方の監視・ボットを開始
 start_showroom_monitor()
-start_tiktok_bot()
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
