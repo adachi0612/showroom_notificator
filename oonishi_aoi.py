@@ -136,7 +136,7 @@ def get_mentions(room_url_key):
             discord_id = NAME_TO_DISCORD_ID.get(name)
             if discord_id:
                 mentions.append(discord_id)
-    return " ".join(mentions)
+    return " ".join(mentions) + " "
 
 
 def send_discord_notification(webhook_url, status_data):
